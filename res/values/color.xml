@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="selected">#FFFFFF</color>
+    <color name="unselected">#E8E8E8</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="bg_color">#CCCCCC</color>
+    
+    <!-- Dialog 背景透明 -->
+    <color name="dialog_bg_transparent">#00000000</color>
+</resources>
