@@ -445,6 +445,29 @@ public class WebviewActivity extends Activity {
         			final String docId = DocumentsContract.getDocumentId(uri);
         			Util.printLog(tag, "## " + docId);
         			
+//        			final String docId = DocumentsContract.getDocumentId(uri);
+                    final String[] split = docId.split(":");
+                    final String type = split[0];
+
+                    Uri contentUri = null;
+					if ("image".equals(type)) {
+						contentUri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
+					}
+					else if ("video".equals(type)) {
+						contentUri = MediaStore.Video.Media.EXTERNAL_CONTENT_URI;
+					}
+					else if ("audio".equals(type)) {
+						contentUri = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI;
+					}
+
+                    final String selection = "_id=?";
+                    final String[] selectionArgs = new String[] {
+                            split[1]
+                    };
+
+                    filepath = getDataColumn(this, contentUri, selection, selectionArgs);
+                    Util.printLog(tag, "文件类型 Media " + filepath);
+        			
         			String url = "http://192.168.1.113:8087/webstudy/fileUpload2Svlt";
 //    				String filepath = Constants.PREFIX + File.separator + "2images/uploadtestfile.rar";
 //    				filepath = Constants.PREFIX + File.separator + "2images/testfile11m.pdf";
